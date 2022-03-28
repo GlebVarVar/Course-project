@@ -100,7 +100,7 @@ const CreatePost = () => {
 
         setImageLinks([]);
         setPhotos([{
-          profileIng: 'https://cdn.mos.cms.futurecdn.net/CAZ6JXi6huSuN4QGE627NR.jpg'
+          profileIng: 'https://crankwheel.com/uploads/2019/06/12/CW_How%20to%20deliver%20the%20perfect%20instant%20online%20product%20demo.jpg'
         }]);
         setPhotosToUpload([]);
         setTags([]);
@@ -161,7 +161,7 @@ const CreatePost = () => {
         reader.readAsDataURL(item);
         reader.onload = async () => {
           if (reader.readyState === 2) {
-            if(photos[0].profileIng === 'https://cdn.mos.cms.futurecdn.net/CAZ6JXi6huSuN4QGE627NR.jpg') {
+            if(photos[0].profileIng === 'https://crankwheel.com/uploads/2019/06/12/CW_How%20to%20deliver%20the%20perfect%20instant%20online%20product%20demo.jpg') {
               setPhotos([{profileIng: reader.result}]);
             } else {
               setPhotos([...photos, {profileIng: reader.result}]);
