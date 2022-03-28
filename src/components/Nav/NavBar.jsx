@@ -30,9 +30,12 @@ const NavBar = () => {
     }
 
     useEffect(() => {
-        getIsUserAdminAPI(context.email).then((res) => {
-            setId(res.data.id)
-        })
+        if (context) {
+            getIsUserAdminAPI(context.email).then((res) => {
+                setId(res.data.id)
+            })
+        }
+        
     }, []);
 
     const logoColor = theme == 'light'? 'black' : 'white' 
