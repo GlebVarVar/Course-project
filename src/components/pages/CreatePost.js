@@ -4,6 +4,7 @@ import {userContext, languageContext} from "../Contexts/Contexts";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
+import {_apiBase} from "../../services";
 
 import { InputGroup, DropdownButton, Dropdown, Toast, FormControl, Tabs, Tab, Form,Carousel, Container, FloatingLabel, Col, Row, ButtonGroup, Button } from "react-bootstrap";
 import NavBar from "../Nav/NavBar"
@@ -48,7 +49,7 @@ const CreatePost = () => {
   // console.log(tags);
 
   const getAllTags = async() => {
-    const options = await axios.get(`http://localhost:3001/api/tags/all`);
+    const options = await axios.get(`${_apiBase}/tags/all`);
     const listOfTags = options.data ;
     setAlltags(listOfTags.map((tag, key) => {
       return {key: key, text: tag.tag, value: tag.tag}
@@ -110,8 +111,8 @@ const CreatePost = () => {
       const PostId = res.data;
       console.log(tags);
 
-      await axios.post('http://localhost:3001/api/tags/', {tags, PostId});
-      await axios.post('http://localhost:3001/api/rating/', {Rating, email, PostId});
+      await axios.post(`${_apiBase}/tags/`, {tags, PostId});
+      await axios.post(`${_apiBase}/rating/`, {Rating, email, PostId});
       uploadImage(PostId);
       
 
@@ -123,7 +124,7 @@ const CreatePost = () => {
       console.log(tags, newAlltags);
       tags.forEach((tag) => {
         if(newAlltags.includes(tag)  !== true){
-          axios.post('http://localhost:3001/api/tags/all', {tag}).then((res) => console.log(res))
+          axios.post(`${_apiBase}/tags/all`, {tag}).then((res) => console.log(res))
         } 
       });
       
@@ -149,7 +150,7 @@ const CreatePost = () => {
       
       console.log(mas);
       setImageLinks(mas);
-      await axios.post('http://localhost:3001/api/photos/', {PostId, mas});
+      await axios.post(`${_apiBase}/photos/`, {PostId, mas});
     }
 
 
