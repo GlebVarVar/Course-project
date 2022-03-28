@@ -238,19 +238,19 @@ const CreatePost = () => {
             <Col >
               <Row className="g-2">
                 <Col md>
-                  <FloatingLabel controlId="floatingInputGrid" label="Title">
+                  <FloatingLabel controlId="floatingInputGrid" label={language.title}>
                     <Form.Control onChange={(e) => setTitle(e.target.value)} value={title} placeholder="Iron Man" />
                   </FloatingLabel>
                 </Col>
                 <Col md>
-                  <FloatingLabel controlId="floatingSelectGrid" label="Rating">
+                  <FloatingLabel controlId="floatingSelectGrid" label={language.rating}>
                     <Form.Select aria-label="Floating label select example" value={Rating} onChange={(e) => setRating(e.target.value)}>
-                      <option>Open this select menu</option>
-                      <option value="5">5 - Awesome!</option>
-                      <option value="4">4 - Great!</option>
-                      <option value="3">3 - Okay</option>
-                      <option value="2">2 - bad</option>
-                      <option value="1">1 - horrible</option>
+                      <option>{language.openMenu}</option>
+                      <option value="5">5 - {language.awesome}</option>
+                      <option value="4">4 - {language.great}</option>
+                      <option value="3">3 - {language.okay}</option>
+                      <option value="2">2 - {language.bad}</option>
+                      <option value="1">1 - {language.horrible}</option>
                     </Form.Select>
                   </FloatingLabel>
                 </Col>
@@ -278,7 +278,7 @@ const CreatePost = () => {
               </Row>
               <Row>
                 <Form.Group controlId="formFileMultiple" className="mb-3">
-                  <Form.Label>Upload your photos(10 Max)!</Form.Label>
+                  <Form.Label>{language.upload}</Form.Label>
                   <Form.Control onChange={(e) => {
                     if (PhotosToUpload.length != 10) {
                       imageHandler(e);
@@ -288,14 +288,11 @@ const CreatePost = () => {
                         setPhotosToUpload([e.target.files[0]])
                       }
                     }
-                    
-                    
-                    // console.log(PhotosToUpload);
 
                   }} 
                     type="file"
                     accept=".png,.jpg,.jpeg,.webp" />
-                  <Button onClick={createPost}>Submit</Button>
+                  <Button onClick={createPost}>{language.submit}</Button>
                 </Form.Group>
               </Row>
               <Row>
@@ -308,8 +305,8 @@ const CreatePost = () => {
             <Col>
               <Row>
                 <Tabs defaultActiveKey="Edit" id="uncontrolled-tab-example" className="mb-3">
-                  <Tab eventKey="Edit" title="Edit">
-                    <FloatingLabel controlId="floatingTextarea2" label="Your text here">
+                  <Tab eventKey="Edit" title={language.edit}>
+                    <FloatingLabel controlId="floatingTextarea2" label={language.yourTextHere}>
                       <Form.Control
                       value={postText}
                       onChange={(e) => setPostText(e.target.value)}
@@ -319,7 +316,7 @@ const CreatePost = () => {
                       />
                     </FloatingLabel>
                   </Tab>
-                  <Tab eventKey="Preview" title="Preview">
+                  <Tab eventKey="Preview" title={language.preview}>
                   <ReactMarkdown>{postText}</ReactMarkdown>
                   </Tab>
                 </Tabs>
